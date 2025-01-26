@@ -18,14 +18,22 @@ async function fetchListings() {
         }
 
         const listings = await response.json();
+        console.log('Fetched listings:', listings); // Debugging: Log fetched data
+
         const listingsContainer = document.getElementById('featured-listings');
         listingsContainer.innerHTML = ''; // Clear any existing listings
+
+        if (listings.length === 0) {
+            // Handle case where no listings are available
+            listingsContainer.innerHTML = '<p>No listings available. Please add some items!</p>';
+            return;
+        }
 
         listings.forEach((listing) => {
             const listingElement = document.createElement('div');
             listingElement.className = 'listing';
             listingElement.innerHTML = `
-                <img src="${listing.image}" alt="${listing.title}" />
+                <img src="${listing.image}" alt="${listing.title}" onerror="this.src='https://via.placeholder.com/150';" />
                 <h3>${listing.title}</h3>
                 <p>${listing.description}</p>
                 <span>Price: $${listing.price}</span>
@@ -33,7 +41,7 @@ async function fetchListings() {
             listingsContainer.appendChild(listingElement);
         });
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching listings:', error.message);
         alert('Failed to fetch listings. Please try again later.');
     }
 }
@@ -65,7 +73,7 @@ async function addListing(title, description, price, image) {
         alert('Listing added successfully!');
         fetchListings(); // Refresh the listings
     } catch (error) {
-        console.error(error);
+        console.error('Error adding listing:', error.message);
         alert('Failed to add listing. Please try again later.');
     }
 }
@@ -74,10 +82,15 @@ async function addListing(title, description, price, image) {
 document.getElementById('add-listing-form').addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    const title = event.target.title.value;
-    const description = event.target.description.value;
-    const price = parseFloat(event.target.price.value);
-    const image = event.target.image.value;
+    const title = event.target.title.value.trim();
+    const description = event.target.description.value.trim();
+    const price = parseFloat(event.target.price.value.trim());
+    const image = event.target.image.value.trim();
+
+    if (!title || !description || isNaN(price) || !image) {
+        alert('All fields are required. Please fill them out correctly.');
+        return;
+    }
 
     await addListing(title, description, price, image);
 
