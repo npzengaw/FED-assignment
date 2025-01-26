@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MokeSell</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>MokeSell</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="chat.html">Chat</a></li>
+                <li><button id="sell-button" class="sell-nav-button">Sell</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search for items...">
+        <button>Search</button>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section id="featured-listings">
+            <!-- Listings dynamically inserted here -->
+        </section>
+    </main>
+
+    <!-- Add Listing Modal -->
+    <div id="add-listing-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="add-listing-form">
+                <input type="text" name="title" placeholder="Title" required />
+                <textarea name="description" placeholder="Description" required></textarea>
+                <input type="number" name="price" placeholder="Price" required />
+                <input type="url" name="image" placeholder="Image URL" required />
+                <button type="submit">Add Listing</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
