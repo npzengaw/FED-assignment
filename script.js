@@ -1,6 +1,6 @@
 // RESTdb.io API Configuration
 const API_URL = 'https://mokesell-ec88.restdb.io/rest/listing'; // Replace with your RESTdb.io endpoint
-const API_KEY = '679628de0acc0620a20d364d'; // Replace with your RESTdb.io API key
+const API_KEY = '9d9fa97fe7f8b7f060127eafaa34a4a4cdf33'; // Replace with your RESTdb.io API key
 
 // Fetch and Display Listings
 async function fetchListings() {
