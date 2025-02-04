@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - MokeSell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>MokeSell</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="chat.html">Chat</a></li>
+                <li><a href="sell.html" id="sell-button" class="sell-nav-button">Sell</a></li>
+                <li><a href="#" id="logout-button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Profile Banner Section -->
+    <section class="profile-banner">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="default-avatar.jpg" alt="Profile Icon" id="profile-icon">
+            </div>
+            <div class="profile-details">
+                <h2 id="profile-username">Zen Gaw</h2>
+                <p id="profile-extra">Profile details</p>
+                <p><strong>5.0</strong> ★ | 12 reviews | Joined 2 years ago</p>
+            </div>
+            <button class="edit-profile-btn">Edit Profile</button>
+        </div>
+    </section>
+
+    <!-- Listings Section -->
+    <main>
+        <section class="user-listings">
+            <h3>Your Listings</h3>
+            <div id="user-listings-container" class="listing-grid">
+                <!-- Example items -->
+                <div class="listing-item">
+                    <img src="item1.jpg" alt="Item 1">
+                    <h4>Item 1</h4>
+                    <p>$25</p>
+                </div>
+                <div class="listing-item">
+                    <img src="item2.jpg" alt="Item 2">
+                    <h4>Item 2</h4>
+                    <p>$50</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
+    </footer>
+
+    <script src="auth.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ensure user session is valid
+            checkUserSession();
+
+            // Example function to fetch user listings
+            loadUserListings();
+        });
+
+        function loadUserListings() {
+            const listingsContainer = document.getElementById("user-listings-container");
+
+            // Replace with API call
+            const items = [
+                { title: "Air Jordan", price: 70, image: "air-jordan.jpg" },
+                { title: "Roblox Swordburst2", price: 1, image: "swordburst2.jpg" },
+            ];
+
+            listingsContainer.innerHTML = items
+                .map(
+                    (item) => `
+                    <div class="listing-item">
+                        <img src="${item.image}" alt="${item.title}">
+                        <h4>${item.title}</h4>
+                        <p>S$${item.price}</p>
+                    </div>
+                `
+                )
+                .join("");
+        }
+    </script>
+</body>
+</html>

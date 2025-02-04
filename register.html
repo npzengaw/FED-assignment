@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
+    <title>Register - MokeSell</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    
 </head>
 <body>
     <!-- Header -->
@@ -26,16 +24,23 @@
         </nav>
     </header>
 
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" placeholder="Search for items...">
-        <button>Search</button>
-    </div>
-
     <!-- Main Content -->
     <main>
-        <section id="featured-listings">
-            <!-- Listings dynamically inserted here -->
+        <section class="auth-container">
+            <h2>Create a New Account</h2>
+            <form id="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="new-password" required>
+
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
         </section>
     </main>
 
@@ -44,8 +49,10 @@
         <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
     <script src="auth.js" defer></script>
+
 
 </body>
 </html>

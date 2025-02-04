@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
+    <title>Login - MokeSell</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    
+
 </head>
 <body>
-    <!-- Header -->
     <header>
         <h1>MokeSell</h1>
         <nav>
@@ -26,26 +24,25 @@
         </nav>
     </header>
 
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" placeholder="Search for items...">
-        <button>Search</button>
-    </div>
-
-    <!-- Main Content -->
     <main>
-        <section id="featured-listings">
-            <!-- Listings dynamically inserted here -->
+        <section class="auth-container">
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <button type="submit">Login</button>
+            </form>            
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
-    </footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
     <script src="auth.js" defer></script>
+
 
 </body>
 </html>
