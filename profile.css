@@ -140,25 +140,29 @@ nav ul li a:hover, nav ul li button:hover {
 
 
 /* Listings Section */
-.listings-section {
+.listing-grid {
+    display: grid; /* Use CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+    gap: 1.5rem; /* Add spacing between items */
+    width: 60%; /* Stretch to 60% of the screen width (leaving 20% on each side) */
+    margin: 0 auto; /* Center the grid within the available space */
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.user-listings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 2rem;
     padding: 1rem;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
-.listings-section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
 
-.listing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-}
 
 .listing-item {
     background: #fff;
@@ -186,12 +190,30 @@ nav ul li a:hover, nav ul li button:hover {
 .listing-item h4 {
     font-size: 1rem;
     margin: 0.5rem 0;
+    font-weight: bold;
+    color: #333;
 }
 
 .listing-item p {
     font-size: 0.9rem;
     color: #555;
 }
+
+@media (max-width: 768px) {
+    .listing-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        width: 80%; /* Adjust the grid width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .listing-grid {
+        grid-template-columns: 1fr; /* 1 column for mobile devices */
+        width: 90%; /* Adjust the grid width for very small screens */
+    }
+}
+
+
 
 /* Footer Styling */
 footer {
