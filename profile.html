@@ -63,36 +63,8 @@
     </footer>
 
     <script src="auth.js" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Ensure user session is valid
-            checkUserSession();
+    
+    <script src="profile.js" defer></script>
 
-            // Example function to fetch user listings
-            loadUserListings();
-        });
-
-        function loadUserListings() {
-            const listingsContainer = document.getElementById("user-listings-container");
-
-            // Replace with API call
-            const items = [
-                { title: "Air Jordan", price: 70, image: "air-jordan.jpg" },
-                { title: "Roblox Swordburst2", price: 1, image: "swordburst2.jpg" },
-            ];
-
-            listingsContainer.innerHTML = items
-                .map(
-                    (item) => `
-                    <div class="listing-item">
-                        <img src="${item.image}" alt="${item.title}">
-                        <h4>${item.title}</h4>
-                        <p>S$${item.price}</p>
-                    </div>
-                `
-                )
-                .join("");
-        }
-    </script>
 </body>
 </html>

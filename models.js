@@ -5,7 +5,8 @@ const ListingSchema = new mongoose.Schema({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     image: { type: String, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Links listing to user
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Link to User
     date: { type: Date, default: Date.now }
 });
 
+module.exports = mongoose.model('Listing', ListingSchema);

@@ -52,3 +52,41 @@ async function fetchListings() {
 
 // Initialize Listings on Page Load
 document.addEventListener('DOMContentLoaded', fetchListings);
+
+
+document.getElementById("add-listing-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to sell items.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const price = document.getElementById("price").value;
+    const image = document.getElementById("image").value;
+
+    try {
+        const response = await fetch("http://localhost:5000/api/listings", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token,
+            },
+            body: JSON.stringify({ title, description, price, image }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to add listing.");
+        }
+
+        alert("Listing successfully added!");
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("Error adding listing:", error);
+        alert("Error adding listing.");
+    }
+});

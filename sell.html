@@ -27,20 +27,19 @@
         <section class="sell-section">
             <h2>List Your Item</h2>
             <form id="add-listing-form">
+                <input type="hidden" id="listing-id">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Enter item title" required>
-
+                <input type="text" id="title" required>
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" placeholder="Enter item description" required></textarea>
-
+                <textarea id="description" required></textarea>
                 <label for="price">Price ($):</label>
-                <input type="number" id="price" name="price" placeholder="Enter item price" required>
-
+                <input type="number" id="price" required>
                 <label for="image">Image URL:</label>
-                <input type="url" id="image" name="image" placeholder="Enter image URL" required>
-
-                <button type="submit">Add Listing</button>
+                <input type="url" id="image" required>
+                <button type="submit">Save Listing</button>
             </form>
+        
+            
         </section>
     </main>
 
@@ -48,5 +47,8 @@
     <footer>
         <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
     </footer>
+
+    <script src="sell.js" defer></script>
+
 </body>
 </html>
