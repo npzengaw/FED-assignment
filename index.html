@@ -6,7 +6,7 @@
     <title>MokeSell</title>
     <link rel="stylesheet" href="index.css">
     <script src="script.js" defer></script>
-    
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 <body>
     <!-- Header -->
@@ -14,7 +14,18 @@
         <h1>MokeSell</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li>
+                    <button class="lottie-button">
+                        <dotlottie-player 
+                            src="https://lottie.host/fd30fb9f-a07f-4254-9821-186c239af1db/BaV9LaSJyv.lottie" 
+                            background="transparent" 
+                            speed="1" 
+                            direction="1" 
+                            hover>
+                        </dotlottie-player>
+                    </button>
+                    <a href="index.html">Home</a>
+                </li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="search.html">Search</a></li>
                 <li><a href="chat.html">Chat</a></li>
@@ -34,7 +45,16 @@
 
     <!-- Main Content -->
     <main>
+        <section id="welcome-banner">
+            <div class="welcome-text">
+                <h2>Welcome to MokeSell</h2>
+                <p>Your go-to platform for buying and selling items easily and securely.</p>
+            </div>
+        </section>
+
+        <!-- Featured Listings -->
         <section id="featured-listings">
+            <h2>Featured Listings</h2>
             <!-- Listings dynamically inserted here -->
         </section>
     </main>
@@ -43,9 +63,5 @@
     <footer>
         <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
     </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
-    <script src="auth.js" defer></script>
-
 </body>
 </html>

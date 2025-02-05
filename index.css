@@ -10,76 +10,106 @@ body {
 header {
     position: sticky;
     top: 0;
-    z-index: 10; /* Ensure it stays above other elements */
-    background-color: linear-gradient(45deg, #E86D2C, #E69631);
-    background:  #E86D2C;
+    z-index: 10;
+    background: linear-gradient(45deg, #E86D2C, #E69631);
     color: white;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Vertically centers the navbar content */
+    align-items: center;
 }
 
 header h1 {
     margin: 0;
+    font-size: 1.5rem;
 }
 
-/* Navigation Bar Styling */
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 1rem;
-    align-items: center; /* Center-align items vertically */
 }
 
-nav ul li a, nav ul li button {
+nav ul li {
+    display: inline-flex; /* Align items horizontally */
+    align-items: center; /* Vertically center align text and button */
+    gap: 0.5rem; /* Space between Lottie button and text */
+}
+
+nav ul li a {
+    font-size: 16px; /* Base font size */
     color: white;
     text-decoration: none;
     font-weight: bold;
-    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: #E86D2C;
+}
+
+/* Lottie Button Styling */
+.lottie-button {
+    background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 125%; /* 125% of the navigation link's font size */
+    height: auto; /* Maintain aspect ratio */
 }
 
-nav ul li a:hover, nav ul li button:hover {
-    background-color: white;
-    color: #E86D2C;
+.lottie-button dotlottie-player {
+    width: 125%; /* Scale relative to the font size */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block;
 }
 
-/* Sell Button Styling */
-.sell-nav-button {
-    display: inline-flex; /* Use flex to align content properly */
-    align-items: center; /* Vertically center the text */
-    justify-content: center; /* Horizontally center the text */
-    padding: 0.5rem 1rem;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.lottie-button:hover dotlottie-player {
+    transform: scale(1.1); /* Hover effect */
+    transition: transform 0.2s ease;
 }
 
-.sell-nav-button:hover {
-    background-color: white;
-    color: #E86D2C;
+/* Welcome Banner Section */
+#welcome-banner {
+    padding: 2rem 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2rem;
+}
+
+.welcome-text h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+}
+
+.welcome-text p {
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+    color: #666;
 }
 
 /* Search Bar Styling */
 .search-bar {
-    margin: 1rem 2rem;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto;
     gap: 0.5rem;
+    max-width: 600px;
 }
 
 .search-bar input[type="text"] {
-    width: 60%;
+    width: 100%;
+    max-width: 400px;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px 0 0 4px;
@@ -89,16 +119,33 @@ nav ul li a:hover, nav ul li button:hover {
 
 .search-bar button {
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background: linear-gradient(45deg, #E86D2C, #E69631); /* Use 'background' for gradients */
     color: white;
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .search-bar button:hover {
-    background-color: #0056b3;
+    background: #E86D2C; /* Change background to a solid color on hover */
+}
+
+
+/* Featured Listings Section */
+#featured-listings {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#featured-listings h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
 }
 
 /* Footer Styling */
@@ -110,4 +157,20 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: 2rem;
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+    nav ul li a {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .lottie-button {
+        width: 110%; /* Adjust scaling for mobile */
+    }
+
+    .lottie-button dotlottie-player {
+        width: 110%;
+    }
 }
