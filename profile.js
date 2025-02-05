@@ -1,14 +1,24 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const user = JSON.parse(localStorage.getItem("user"));
+    
+    // Temporarily remove login requirement
+    /*
     if (!user) {
         alert("You need to log in to access your profile.");
         window.location.href = "login.html";
         return;
     }
+    */
 
-    document.getElementById("profile-username").textContent = user.username;
+    if (user) {
+        document.getElementById("profile-username").textContent = user.username;
+    } else {
+        document.getElementById("profile-username").textContent = "Guest User"; // Placeholder for guest users
+    }
+
     await loadUserListings();
 });
+
 
 async function loadUserListings() {
     const user = JSON.parse(localStorage.getItem("user"));

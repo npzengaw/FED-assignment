@@ -71,7 +71,7 @@ async function registerUser(event) {
 
 // Function to log in a user
 async function loginUser(event) {
-    event.preventDefault(); // Stop form submission
+    event.preventDefault();
 
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -99,29 +99,27 @@ async function loginUser(event) {
         }
 
         const users = await response.json();
-
         if (users.length === 0) {
             alert("No user found with this email.");
             return;
         }
 
         const user = users[0];
-
-        // Hash the entered password and compare with stored hash
         const hashedPassword = await hashPassword(password);
+
         if (hashedPassword !== user.password) {
             alert("Invalid password. Please try again.");
             return;
         }
 
-        // Save user data to localStorage (without password)
-        localStorage.setItem("user", JSON.stringify({
-            username: user.username,
-            email: user.email,
-        }));
+        // Generate JWT Token (Mocking authentication)
+        const token = btoa(JSON.stringify({ _id: user._id, username: user.username, email: user.email }));
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify({ username: user.username, email: user.email }));
 
         alert("Login successful. Redirecting to homepage...");
-        window.location.href = "index.html"; // Redirect to homepage
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Login Error:", error.message);
         alert("Login Error: " + error.message);
