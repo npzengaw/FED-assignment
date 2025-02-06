@@ -1,5 +1,5 @@
 // RESTdb.io API Configuration
-const API_URL = 'https://mokesell-ec88.restdb.io/rest/listing';
+const API_URL = 'http://localhost:5000/listing';
 const API_KEY = '679628de0acc0620a20d364d';
 
 // Fetch and Display Listings
@@ -90,3 +90,41 @@ document.getElementById("add-listing-form").addEventListener("submit", async (ev
         alert("Error adding listing.");
     }
 });
+async function fetchFeaturedListings() {
+    const API_URL = 'https://mokesell-ec88.restdb.io/rest/listing';
+    const API_KEY = '679628de0acc0620a20d364d';
+
+    try {
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': API_KEY
+            }
+        });
+
+        if (!response.ok) throw new Error('Failed to fetch featured listings.');
+
+        const listings = await response.json();
+        const listingsContainer = document.querySelector('#featured-listings .listings-container');
+
+        if (!listings || listings.length === 0) {
+            listingsContainer.innerHTML = '<p>No featured listings available.</p>';
+            return;
+        }
+
+        listingsContainer.innerHTML = listings.map((listing) => `
+            <div class="listing">
+                <img src="${listing.image}" alt="${listing.title}" onerror="this.src='https://via.placeholder.com/150';" />
+                <h3>${listing.title}</h3>
+                <p>${listing.description}</p>
+                <span>Price: $${listing.price}</span>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error fetching featured listings:', error);
+        alert('Failed to load featured listings.');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', fetchFeaturedListings);
